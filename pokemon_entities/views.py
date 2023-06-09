@@ -69,6 +69,7 @@ def show_pokemon(request, pokemon_id):
         'title_jp': requested_pokemon.title_jp,
         'description': requested_pokemon.description,
         'next_evolution': requested_pokemon.next_evolution,
+        'previous_evolution': requested_pokemon.pokemon_set.first(),
         'default_image': DEFAULT_IMAGE_URL,
     }
 
