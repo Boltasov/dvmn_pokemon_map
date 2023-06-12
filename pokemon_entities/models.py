@@ -14,12 +14,12 @@ class Pokemon(models.Model):
                                        verbose_name='В кого эволюционирует',
                                        related_name='previous_evolution')
 
-    def __str__(self):
-        return self.title
-
     class Meta:
         verbose_name = 'Покемон'
         verbose_name_plural = 'Покемоны'
+
+    def __str__(self):
+        return self.title
 
 
 class PokemonEntity(models.Model):
@@ -35,9 +35,9 @@ class PokemonEntity(models.Model):
     defence = models.IntegerField(verbose_name='Защита', blank=True, null=True)
     stamina = models.IntegerField(verbose_name='Выносливость', blank=True, null=True)
 
-    def __str__(self):
-        return f'{self.pokemon}_{self.pk}'
-
     class Meta:
         verbose_name = 'Появление покемона'
         verbose_name_plural = 'Появления покемонов'
+
+    def __str__(self):
+        return f'{self.pokemon}_{self.pk}'
