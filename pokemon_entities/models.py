@@ -11,7 +11,8 @@ class Pokemon(models.Model):
                                        blank=True,
                                        null=True,
                                        on_delete=models.SET_NULL,
-                                       verbose_name='В кого эволюционирует')
+                                       verbose_name='В кого эволюционирует',
+                                       related_name='previous_evolution')
 
     def __str__(self):
         return self.title
@@ -24,7 +25,8 @@ class Pokemon(models.Model):
 class PokemonEntity(models.Model):
     lat = models.FloatField(verbose_name='Широта')
     lon = models.FloatField(verbose_name='Долгота')
-    pokemon = models.ForeignKey(Pokemon, on_delete=models.CASCADE, default=1, verbose_name='Покемон')
+    pokemon = models.ForeignKey(Pokemon, on_delete=models.CASCADE, default=1,
+                                verbose_name='Покемон', related_name='entities')
     appeared_at = models.DateTimeField(verbose_name='Когда появляется')
     disappeared_at = models.DateTimeField(verbose_name='Когда исчезает')
     level = models.IntegerField(verbose_name='Уровень', blank=True, null=True)
