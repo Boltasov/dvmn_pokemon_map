@@ -12,7 +12,7 @@ class Pokemon(models.Model):
                                        null=True,
                                        on_delete=models.SET_NULL,
                                        verbose_name='В кого эволюционирует',
-                                       related_name='previous_evolution')
+                                       related_name='previous_evolutions')
 
     class Meta:
         verbose_name = 'Покемон'
