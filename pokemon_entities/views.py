@@ -58,9 +58,10 @@ def show_all_pokemons(request):
 
 def show_pokemon(request, pokemon_id):
     requested_pokemon = get_object_or_404(Pokemon, pk=int(pokemon_id))
+    time = localtime()
     pokemons_entities = PokemonEntity.objects.filter(pokemon=requested_pokemon,
-                                                     appeared_at__lte=localtime(),
-                                                     disappeared_at__gte=localtime())
+                                                     appeared_at__lte=time,
+                                                     disappeared_at__gte=time)
 
     pokemon_on_page = {
         'pokemon_id': requested_pokemon.pk,
